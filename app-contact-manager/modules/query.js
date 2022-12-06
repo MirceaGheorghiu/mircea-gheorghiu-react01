@@ -14,6 +14,7 @@ export const findContacts = (needle = 'query') => {
     }, '');
 
     if (haystack.includes(needle)) {
+      // am obs ca .toLowerCase() merge pus si aici pe needle :)
       return true;
     }
 

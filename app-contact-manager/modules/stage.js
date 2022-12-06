@@ -4,6 +4,11 @@ import createMessage from './message.js';
 
 const stage = document.querySelector('.stage');
 
+// nu am stiu exact unde sa pun exportul si l-am lasat aici, pt ca aveam const stage in acest fisier :)
+export const clearStage = () => {
+  stage.innerHTML = '';
+};
+
 // cancel action button
 stage.addEventListener('click', (event) => {
   const { target } = event;
@@ -15,7 +20,7 @@ stage.addEventListener('click', (event) => {
     return;
   }
 
-  stage.innerHTML = '';
+  clearStage();
 });
 
 // create contact
@@ -42,7 +47,7 @@ stage.addEventListener('submit', (event) => {
 
   addMessage(createMessage(`Contact ${name.value} ${surname.value} created.`));
 
-  stage.innerHTML = '';
+  clearStage();
 });
 
 export default stage;
