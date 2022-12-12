@@ -1,7 +1,7 @@
 export default (message = '', type = 'success') => {
   const messageContainer = document.createElement('div');
-  const addCancelButton = document.createElement('button');
-  addCancelButton.innerHTML = 'Cancel';
+  const cancelButton = document.createElement('button');
+  cancelButton.innerHTML = 'X';
   messageContainer.classList.add(
     'alert',
     `alert-${type}`,
@@ -9,19 +9,15 @@ export default (message = '', type = 'success') => {
     'align-items-center',
     'justify-content-between',
   );
-  addCancelButton.classList.add('btn', 'btn-danger');
+  cancelButton.classList.add('btn', 'btn-danger', 'btn-cancel');
 
   messageContainer.innerText = message;
 
-  messageContainer.appendChild(addCancelButton);
+  messageContainer.appendChild(cancelButton);
 
-  addCancelButton.addEventListener('click', () => {
-    messageContainer.remove();
-  });
-
-  setTimeout(() => {
-    messageContainer.remove();
-  }, 2000);
+  // setTimeout(() => {
+  //   messageContainer.remove();
+  // }, 2000);
 
   return messageContainer;
 };

@@ -8,4 +8,13 @@ export const clearMessages = () => {
   notificationBar.innerHTML = '';
 };
 
+// ty stage.js for event delegation model :))
+notificationBar.addEventListener('click', (event) => {
+  const { target } = event;
+
+  if (target.classList.contains('btn-cancel')) {
+    target.parentElement.remove();
+  }
+});
+
 export default notificationBar;
