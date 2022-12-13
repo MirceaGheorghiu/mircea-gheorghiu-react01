@@ -1,7 +1,6 @@
 export default (message = '', type = 'success') => {
   const messageContainer = document.createElement('div');
-  const cancelButton = document.createElement('button');
-  cancelButton.innerHTML = 'X';
+  const closeButton = document.createElement('button');
   messageContainer.classList.add(
     'alert',
     `alert-${type}`,
@@ -9,15 +8,17 @@ export default (message = '', type = 'success') => {
     'align-items-center',
     'justify-content-between',
   );
-  cancelButton.classList.add('btn', 'btn-danger', 'btn-cancel');
+  closeButton.classList.add('btn', 'btn-close', 'btn-close');
+  closeButton.type = 'button';
+  closeButton.title = 'Close button';
 
   messageContainer.innerText = message;
 
-  messageContainer.appendChild(cancelButton);
+  messageContainer.appendChild(closeButton);
 
-  // setTimeout(() => {
-  //   messageContainer.remove();
-  // }, 2000);
+  setTimeout(() => {
+    messageContainer.remove();
+  }, 2000);
 
   return messageContainer;
 };

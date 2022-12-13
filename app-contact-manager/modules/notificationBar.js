@@ -12,9 +12,13 @@ export const clearMessages = () => {
 notificationBar.addEventListener('click', (event) => {
   const { target } = event;
 
-  if (target.classList.contains('btn-cancel')) {
-    target.parentElement.remove();
+  if (target.nodeName !== 'BUTTON' || !target.classList.contains('btn-close')) {
+    return;
   }
+  const button = target;
+  const parent = button.parentElement;
+
+  parent.remove();
 });
 
 export default notificationBar;
