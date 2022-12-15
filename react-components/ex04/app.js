@@ -105,3 +105,72 @@ for (let i = 0; i < friendPairs.length; i++) {
     }`,
   );
 }
+
+console.warn(`
+Folosind Object.entries() pe proprietatea skills,
+afiseaza toate abilitatile din obiectul skills.
+`);
+const message3 = Object.entries(person.skills)
+  .reduce((message3, skillPair, index, skills) => {
+    const [skillName, _] = skillPair;
+    let punctuation = ', ';
+
+    if (index === skills.length - 1) {
+      punctuation = '.';
+    }
+
+    if (index === skills.length - 2) {
+      punctuation = ' si ';
+    }
+
+    message3 += `${skillName}${punctuation}`;
+
+    return message3;
+  }, 'Abilitatile din obiectul skills sunt: ')
+  .trim();
+console.log(message3);
+
+console.warn(`
+Prin aceeasi metoda, afiseaza o lista cu numele complet al prietenilor.
+`);
+Object.entries(person.friends).forEach(([, friend]) => {
+  const { name, surname } = friend;
+
+  console.log(`${name} ${surname}`);
+});
+
+console.warn(`
+Afiseaza propozitia: “Prietenii mei sunt
+Larry Larryson, Steven Stevenson si Carol Carolson.”
+folosind Object.entries()
+`);
+const message4 = Object.entries(person.friends).reduce(
+  (message4, [, { name, surname }], index, friends) => {
+    let punctuation = ', ';
+
+    if (index === friends.length - 1) {
+      punctuation = '.';
+    }
+
+    if (index === friends.length - 2) {
+      punctuation = ' si ';
+    }
+
+    message4 += `${name} ${surname}${punctuation}`;
+
+    return message4;
+  },
+  'Prietenii mei sunt ',
+);
+console.log(message4);
+
+console.warn(`
+In mod similar, afiseaza mai multe propozitii
+(cate una per console.log()) care sa afiseze:
+“Larry are xx ani. Steven are …”
+`);
+Object.entries(person.friends).forEach((friendPair) => {
+  const [, { name, age }] = friendPair;
+
+  console.log(`${name} are ${age} ani.`);
+});
