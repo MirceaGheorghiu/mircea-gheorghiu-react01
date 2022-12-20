@@ -627,6 +627,7 @@ aside img {
   display: flex;
   flex-direction: column;
 }
+
 .footer-sign-up-newsletter form label {
   margin-bottom: 10px;
 }
@@ -645,6 +646,33 @@ aside img {
 .footer-sign-up-newsletter button {
   max-width: 100px;
   margin-left: 0;
+}
+
+.footer-sign-up-newsletter button .loader {
+  /* am imprumutat culoarea de contrast de mai jos :) */
+  color: #740878;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.footer-sign-up-newsletter .form-message {
+  color: #740878;
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.footer-sign-up-newsletter .success-message {
+  color: #740878;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .footer-nav-style nav li {
