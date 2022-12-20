@@ -13,12 +13,12 @@ export const render = (pet) => {
 
     <button title="Delete"
       type="button"
-      class="btn btn-secondary"
+      class="btn btn-secondary delete-pet"
     >Delete</button>
 
     <button title="Edit"
       type="button"
-      class="btn btn-secondary"
+      class="btn btn-secondary edit-pet-button"
     >Edit</button>
   `;
 

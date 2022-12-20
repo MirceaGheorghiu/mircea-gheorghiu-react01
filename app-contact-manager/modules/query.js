@@ -83,3 +83,27 @@ export const createPet = (contactId, pet) => {
   // push mutates
   contact.pets.push(pet);
 };
+
+export const findPet = (contactId, petId) => {
+  const contact = findContact(contactId);
+
+  if (!contact) {
+    return;
+  }
+
+  return contact.pets.find((pet) => {
+    return pet.id === Number(petId);
+  });
+};
+
+export const updatePet = (contactId, petId, { name, species, age }) => {
+  const pet = findPet(contactId, petId);
+
+  if (!pet) {
+    return;
+  }
+
+  pet.name = name;
+  pet.species = species;
+  pet.age = age;
+};
