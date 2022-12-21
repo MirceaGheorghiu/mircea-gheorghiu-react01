@@ -3,7 +3,9 @@ import {
   createContact,
   createPet,
   deleteContact,
+  deletePet,
   findContact,
+  findPet,
   updateContact,
   updatePet,
 } from './query.js';
@@ -236,6 +238,36 @@ stage.addEventListener('submit', (event) => {
   addMessage(
     createMessage(
       `Pet ${name.value} updated for contact ${contactName} ${contactSurname} with ID: ${contactId.value}.`,
+    ),
+  );
+});
+
+// delete pet
+stage.addEventListener('click', (event) => {
+  const { target } = event;
+
+  if (
+    target.nodeName !== 'BUTTON' ||
+    !target.classList.contains('delete-pet')
+  ) {
+    return;
+  }
+
+  const button = target;
+  const contactContainer = button.closest('.contact');
+  const contactId = Number(contactContainer.dataset.contactId);
+  const petContainer = button.closest('.pet');
+  const petId = Number(petContainer.dataset.petId);
+
+  const { name: contactName, surname: contactSurname } = findContact(contactId);
+  const { name: petName } = findPet(contactId, petId);
+
+  deletePet(contactId, petId);
+  clearStage();
+  clearMessages();
+  addMessage(
+    createMessage(
+      `${contactName} ${contactSurname}'s pet, ${petName}, was deleted`,
     ),
   );
 });
