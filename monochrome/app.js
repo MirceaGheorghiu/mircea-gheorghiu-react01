@@ -261,12 +261,23 @@ class CartCounter extends React.Component {
     addEventListener(REMOVE_FROM_CART_EVENT, this.productCartAction);
   }
 
+  componentWillUnmount() {
+    removeEventListener(ADD_TO_CART_EVENT, this.productCartAction);
+    removeEventListener(REMOVE_FROM_CART_EVENT, this.productCartAction);
+  }
+
   render() {
     return (
       <div
         className="header-counter"
         onClick={() => {
-          alert(this.state.cartItems);
+          // early return
+          if (this.state.cartItems.length === 0) {
+            return;
+          }
+          alert(
+            `In the cart there are the following ${this.state.cartItems.length} products: ${this.state.cartItems}.`,
+          );
         }}
       >
         {this.state.cartItemsCount > 0 ? (
@@ -319,12 +330,22 @@ class WishlistCounter extends React.Component {
     addEventListener(REMOVE_FROM_WL_EVENT, this.wishlistAction);
   }
 
+  componentWillUnmount() {
+    removeEventListener(ADD_TO_WL_EVENT, this.wishlistAction);
+    removeEventListener(REMOVE_FROM_WL_EVENT, this.wishlistAction);
+  }
+
   render() {
     return (
       <div
         className="header-counter"
         onClick={() => {
-          alert(this.state.items);
+          if (this.state.items.length === 0) {
+            return;
+          }
+          alert(
+            `In the wishlist there are the following ${this.state.items.length} products: ${this.state.items}.`,
+          );
         }}
       >
         {this.state.itemsCount > 0 ? (
